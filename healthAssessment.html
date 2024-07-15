@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health App Questionnaires</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Health App Questionnaires</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#bmi">BMI Calculator</a></li>
+                <li><a href="#framingham">Framingham Score</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="bmi">
+            <h2>BMI Calculator</h2>
+            <form id="bmi-form">
+                <label for="height">Height (cm):</label>
+                <input type="number" id="height" name="height" required>
+
+                <label for="weight">Weight (kg):</label>
+                <input type="number" id="weight" name="weight" required>
+
+                <button type="button" onclick="calculateBMI()">Calculate BMI</button>
+            </form>
+            <p id="bmi-result"></p>
+        </section>
+
+        <section id="framingham">
+            <h2>Framingham Score</h2>
+            <form id="framingham-form">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+
+                <label for="total-cholesterol">Total Cholesterol (mg/dL):</label>
+                <input type="number" id="total-cholesterol" name="total-cholesterol" required>
+
+                <label for="hdl-cholesterol">HDL Cholesterol (mg/dL):</label>
+                <input type="number" id="hdl-cholesterol" name="hdl-cholesterol" required>
+
+                <label for="systolic-bp">Systolic Blood Pressure (mmHg):</label>
+                <input type="number" id="systolic-bp" name="systolic-bp" required>
+
+                <label for="hypertension-treatment">On Hypertension Treatment:</label>
+                <select id="hypertension-treatment" name="hypertension-treatment" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+
+                <label for="smoker">Smoker:</label>
+                <select id="smoker" name="smoker" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+
+                <label for="diabetes">Diabetes:</label>
+                <select id="diabetes" name="diabetes" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+
+                <button type="button" onclick="calculateFramingham()">Calculate Framingham Score</button>
+            </form>
+            <p id="framingham-result"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Health App. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function calculateBMI() {
+            const height = document.getElementById('height').value;
+            const weight = document.getElementById('weight').value;
+            if (height && weight) {
+                const heightInMeters = height / 100;
+                const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(2);
+                document.getElementById('bmi-result').textContent = `Your BMI is ${bmi}`;
+            } else {
+                document.getElementById('bmi-result').textContent = 'Please enter valid height and weight.';
+            }
+        }
+
+        function calculateFramingham() {
+            // Placeholder function for calculating Framingham score
+            // Implement the calculation logic based on the Framingham score algorithm
+            document.getElementById('framingham-result').textContent = 'Framingham score calculation logic to be implemented.';
+        }
+    </script>
+</body>
+</html>
