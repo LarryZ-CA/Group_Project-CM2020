@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker</title>
+    <link rel="stylesheet" href="fitnessStyle.css">
+</head>
+<body>
+    <header>
+        <h1>Workout Tracker</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="healthAssessment.html">Health Assessment</a></li>
+                <li><a href="fitnessTracker.html">Fitness Tracker</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="workout-tracker">
+            <h2>Track Your Workouts</h2>
+            <form id="workout-form">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="exercise">Exercise:</label>
+                <select id="exercise" name="exercise" required>
+                    <option value="running">Running</option>
+                    <option value="cycling">Cycling</option>
+                    <option value="swimming">Swimming</option>
+                    <option value="jumping-jacks">Jumping Jacks</option>
+                    <option value="burpees">Burpees</option>
+                    <option value="squats">Squats</option>
+                    <option value="push-ups">Push-ups</option>
+                    <option value="plank">Plank</option>
+                </select>
+
+                <label for="duration">Duration (minutes):</label>
+                <input type="number" id="duration" name="duration" min="1" required>
+
+                <button type="button" onclick="trackWorkout()">Track Workout</button>
+            </form>
+
+            <h3>Your Workouts</h3>
+            <table id="workout-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Exercise</th>
+                        <th>Duration (minutes)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Tracked workouts will be appended here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="workout-stats">
+            <h3>Workout Statistics</h3>
+            <table id="stats-table">
+                <thead>
+                    <tr>
+                        <th>Exercise</th>
+                        <th>Total Duration (minutes)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Workout statistics will be appended here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Health App. All rights reserved.</p>
+    </footer>
+
+    <script src="fitnessJS.js"></script>
+</body>
+</html>

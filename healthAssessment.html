@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health App Questionnaires</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Health Assessment</title>
+    <link rel="stylesheet" href="healthAssessment.css">
 </head>
 <body>
     <header>
@@ -12,8 +12,9 @@
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#bmi">BMI Calculator</a></li>
-                <li><a href="#framingham">Framingham Score</a></li>
+                <li><a href="healthAssessment.html">Health Assessment</a></li>
+                <li><a href="fitnessTracker.html">Fitness Tracker</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -82,24 +83,6 @@
         <p>&copy; 2024 Health App. All rights reserved.</p>
     </footer>
 
-    <script>
-        function calculateBMI() {
-            const height = document.getElementById('height').value;
-            const weight = document.getElementById('weight').value;
-            if (height && weight) {
-                const heightInMeters = height / 100;
-                const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(2);
-                document.getElementById('bmi-result').textContent = `Your BMI is ${bmi}`;
-            } else {
-                document.getElementById('bmi-result').textContent = 'Please enter valid height and weight.';
-            }
-        }
-
-        function calculateFramingham() {
-            // Placeholder function for calculating Framingham score
-            // Implement the calculation logic based on the Framingham score algorithm
-            document.getElementById('framingham-result').textContent = 'Framingham score calculation logic to be implemented.';
-        }
-    </script>
+    <script src="healthAssessment.js"></script>
 </body>
 </html>
