@@ -23,15 +23,24 @@
         <section id="bmi">
             <h2>BMI Calculator</h2>
             <form id="bmi-form">
-                <label for="height">Height (cm):</label>
+                <label for="height">Height:</label>
                 <input type="number" id="height" name="height" required>
+                <select id="height-unit" name="height-unit">
+                    <option value="cm">cm</option>
+                    <option value="ft">ft</option>
+                </select>
 
-                <label for="weight">Weight (kg):</label>
+                <label for="weight">Weight:</label>
                 <input type="number" id="weight" name="weight" required>
+                <select id="weight-unit" name="weight-unit">
+                    <option value="kg">kg</option>
+                    <option value="lbs">lbs</option>
+                </select>
 
                 <button type="button" onclick="calculateBMI()">Calculate BMI</button>
             </form>
             <p id="bmi-result"></p>
+            <p id="bmi-recommendation"></p>
         </section>
 
         <section id="framingham">
@@ -46,11 +55,19 @@
                     <option value="female">Female</option>
                 </select>
 
-                <label for="total-cholesterol">Total Cholesterol (mg/dL):</label>
+                <label for="total-cholesterol">Total Cholesterol:</label>
                 <input type="number" id="total-cholesterol" name="total-cholesterol" required>
+                <select id="cholesterol-unit" name="cholesterol-unit">
+                    <option value="mg/dL">mg/dL</option>
+                    <option value="mmol/L">mmol/L</option>
+                </select>
 
-                <label for="hdl-cholesterol">HDL Cholesterol (mg/dL):</label>
+                <label for="hdl-cholesterol">HDL Cholesterol:</label>
                 <input type="number" id="hdl-cholesterol" name="hdl-cholesterol" required>
+                <select id="hdl-unit" name="hdl-unit">
+                    <option value="mg/dL">mg/dL</option>
+                    <option value="mmol/L">mmol/L</option>
+                </select>
 
                 <label for="systolic-bp">Systolic Blood Pressure (mmHg):</label>
                 <input type="number" id="systolic-bp" name="systolic-bp" required>
@@ -76,6 +93,7 @@
                 <button type="button" onclick="calculateFramingham()">Calculate Framingham Score</button>
             </form>
             <p id="framingham-result"></p>
+            <p id="framingham-recommendation"></p>
         </section>
     </main>
 
