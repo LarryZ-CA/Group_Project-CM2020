@@ -1,3 +1,12 @@
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("ready");    
+    console.log(window.location.href)
+    var navLink = document.querySelectorAll("a[href='healthAssessment.html']");
+    if (navLink) {
+        navLink[0].classList.add("active");
+    }
+})
+
 function calculateBMI() {
     const height = document.getElementById('height').value;
     const weight = document.getElementById('weight').value;
