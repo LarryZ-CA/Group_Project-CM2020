@@ -27,6 +27,10 @@ nav ul li a {
     text-decoration: none;
 }
 
+nav ul li a.active {
+    color: red;
+}
+
 main {
     padding: 20px;
     padding-bottom: 60px; 
