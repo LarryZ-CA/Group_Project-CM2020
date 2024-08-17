@@ -4,7 +4,7 @@ body {
     font-family: "Roboto", sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #ffffff;
 }
 
 header {
@@ -37,7 +37,7 @@ nav ul li a.active {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: #fcfcfc;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -82,29 +82,32 @@ nav ul li a {
 nav ul li a.active {
     color: red;
 }
-
-main {
-    padding: 20px;
-    padding-bottom: 60px; 
-}
-
-h2, h3 {
-    color: #333;
-}
-
 form {
-    margin-bottom: 20px;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgb(254, 254, 254);
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
 label {
     display: block;
-    margin: 10px 0 5px;
+    margin-top: 10px;
+    font-weight: bold;
 }
 
-input, select {
+input, select, textarea {
     width: 100%;
     padding: 8px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 button {
@@ -113,37 +116,56 @@ button {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
+    border-radius: 4px;
+    margin-top: 20px;
 }
 
 button:hover {
     background-color: #555;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+#results {
+    display: none;
 }
 
-table, th, td {
+.exercise-item {
     border: 1px solid #ddd;
-}
-
-th, td {
     padding: 10px;
-    text-align: left;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-footer {
+    margin: 10px 0;
+    border-radius: 5px;
     text-align: center;
+}
+
+.exercise-item img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+
+#formResults {
+    font-size: 17px;
+    text-align: center;
+}
+
+#ApiResults {
+    display: flex;
+    flex-wrap: wrap; /* Allows the items to wrap to the next line */
+    gap: 10px; /* Adds space between items */
+}
+
+.exercise-item {
+    flex: 1 1 calc(20% - 10px); /* 20% of the width minus the gap */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+    border: 1px solid #ddd;
     padding: 10px;
-    background-color: #333;
-    color: #fff;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.exercise-item img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
 }
