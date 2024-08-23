@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Videos</title>
+    <link rel="stylesheet" href="fitnessVideos.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="healthAssessment.html">Assessment</a></li>
+                <li class="dropdown">
+                    <button class="dropbtn">Fitness
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="fitnessTracker.html">Fitness Tracker</a>
+                        <a href="fitnessVideos.html">Fitness Videos</a>
+                    </div>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Workout Videos</h1>
+
+        <!-- Search and Filter Section -->
+        <section id="search-filter">
+            
+            <select id="body-part-filter">
+                <option value="">Filter by Body Part</option>
+                <option value="full_body">Full Body</option>
+                <option value="posture">Posture</option>
+                <option value="upper_body">Upper Body</option>
+                <option value="weight_loss">Weight Loss</option>
+            </select>
+            
+            <button id="search-button">Search</button>
+        </section>
+
+        <section class="video-container" id="video-container">
+            <!-- Example Video Items -->
+            <div class="video-item" data-body-part="posture">
+                <p>Posture Workout</p>
+                <iframe src="https://www.youtube.com/embed/--ZoodYFRVY" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item" data-body-part="weight_loss">
+                <p>Weight Loss Workout</p>
+                <iframe src="https://www.youtube.com/embed/u7nsF6y9YyY" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item" data-body-part="upper">
+                <p>No Equipement Workout</p>
+                <iframe src="https://www.youtube.com/embed/OpBfh8aul-s" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item" data-body-part="full_body">
+                <p>Core Workout</p>
+                <iframe src="https://www.youtube.com/embed/iAiXp25UmiE" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item" data-body-part="weight_loss">
+                <p>Weight Loss Workout</p>
+                <iframe src="https://www.youtube.com/embed/xojUP-J38MI" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item" data-body-part="upper_body">
+                <p>Body Workout</p>
+                <iframe src="https://www.youtube.com/embed/Kd4Yjkr5qMM" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item" data-body-part="full_body">
+                <p>Core Workout</p>
+                <iframe src="https://www.youtube.com/embed/uPbsJPPplyA" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item" data-body-part="full_body">
+                <p>Warm up</p>
+                <iframe src="https://www.youtube.com/embed/3hTh5T7pWnY" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </section>
+    </main>
+
+    <script src="fitnessVideos.js"></script>
+
+</body>
+</html>
