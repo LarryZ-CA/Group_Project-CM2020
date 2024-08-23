@@ -99,37 +99,6 @@ p {
     line-height: 1.6;
 }
 
-/* Form Styles */
-form {
-    margin-top: 20px;
-}
-
-label {
-    display: block;
-    margin: 10px 0 5px;
-    color: #333;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-button:hover {
-    background-color: #555;
-}
 
 /* Features List Styles */
 #features ul {
