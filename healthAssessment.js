@@ -9,13 +9,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 document.getElementById('assessment-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting the traditional way
+    event.preventDefault(); // Prevent the form from submitting automatically
 
     setTimeout(() => {
 
         const main = document.querySelector("main");
         const APIresultsDiv = document.getElementById("ApiResults");
-        const FormResultsDiv = document.getElementById("FormResults");
 
         APIresultsDiv.style.display = "flex";
 
@@ -58,17 +57,12 @@ document.getElementById('assessment-form').addEventListener('submit', function(e
     };
     const dailyCalories = bmr * activityFactors[activityLevel];
 
-    // Display results
-    // alert(`Your BMI is ${bmi.toFixed(2)}.\nYour daily caloric needs are approximately ${dailyCalories.toFixed(0)} calories.`);
-
-    // You can now use this information to recommend workouts and diets based on the user's input and calculations.
-
-    getExercises(bmi, dailyCalories);
-
+    getExercises(dailyCalories);
+    suggestFoods(bmi, goal, exerciseFrequency, exerciseType, intensity, currentDiet, mealFrequency, foodPreferences, bodyType);
 });
 
 
-async function getExercises(bmi ,dailyCalories) {
+async function getExercises(dailyCalories) {
     const APIresultsDiv = document.getElementById("ApiResults");
     const FormResultsDiv = document.getElementById("formResults");
     
@@ -84,16 +78,16 @@ async function getExercises(bmi ,dailyCalories) {
     try {
         const response = await fetch(url, options);
         const result = await response.json(); // Parse the response as JSON
+        const header = document.createElement("h3");
     
-        let bmiDiv = document.createElement("div");
         let dailyCal = document.createElement("div");
-        bmiDiv.innerHTML = "Your BMI is " + bmi.toFixed(2);
         dailyCal.innerHTML = "Your daily caloric needs are approximately " +  dailyCalories.toFixed(0) + " calories.";
-    
+        header.innerHTML = "Recommended Exercises Based on Your Daily Caloric Needs:";
+        
         // Clear any existing content in APIresultsDiv
         APIresultsDiv.innerHTML = "";
-
-        FormResultsDiv.appendChild(bmiDiv);
+        
+        FormResultsDiv.appendChild(header); 
         FormResultsDiv.appendChild(dailyCal);
 
         // Loop through the array of exercise objects
@@ -103,7 +97,7 @@ async function getExercises(bmi ,dailyCalories) {
             exerciseDiv.classList.add("exercise-item"); // Add a class for styling (optional)
             
             // Set the content of the div
-            exerciseDiv.innerHTML = `
+            exerciseDiv.innerHTML = `   
                 <h3>${exercise.name}</h3>
                 <p><strong>Body Part:</strong> ${exercise.bodyPart}</p>
                 <p><strong>Equipment:</strong> ${exercise.equipment}</p>
@@ -120,4 +114,71 @@ async function getExercises(bmi ,dailyCalories) {
     }
 }
 
-// Call the function to load the exercises when the page loads
+function suggestFoods(bmi, goal, exerciseFrequency, exerciseType, intensity, currentDiet, mealFrequency, foodPreferences, bodyType) {
+    const foodSuggestions = [];
+    const FormResultsDiv = document.getElementById("formResults");
+
+
+    if (goal === 'weight_loss') {
+        foodSuggestions.push("Focus on portion control and meal timing.");
+        foodSuggestions.push("Incorporate more high-fiber foods to increase satiety.");
+    } else if (goal === 'muscle_gain') {
+        foodSuggestions.push("Increase protein intake to support muscle growth.");
+        foodSuggestions.push("Consume post-workout meals with both carbs and protein.");
+    } else if (goal === 'general_fitness') {
+        foodSuggestions.push("Maintain a balanced diet with controlled portion sizes.");
+        foodSuggestions.push("Include a variety of foods to meet micronutrient needs.");
+    }
+
+    if (exerciseFrequency >= 5) {
+        foodSuggestions.push("Consider high-protein snacks post-workout to aid recovery.");
+        foodSuggestions.push("Hydrate adequately, especially if exercising intensely.");
+    } else if (exerciseFrequency <= 2) {
+        foodSuggestions.push("Focus on maintaining a calorie balance to avoid weight gain.");
+    }
+
+    if (exerciseType === 'cardiovascular' && intensity === 'intense') {
+        foodSuggestions.push("Increase protein intake to support muscle recovery and growth.");
+        foodSuggestions.push("Ensure adequate carbohydrate intake for energy.");
+    } else if (exerciseType === 'strength_training' && intensity === 'intense') {
+        foodSuggestions.push("Focus on protein-rich foods to aid muscle repair.");
+    }
+
+    if (currentDiet.toLowerCase().includes('vegetarian')) {
+        foodSuggestions.push("Incorporate plant-based proteins like lentils, beans, and tofu.");
+        foodSuggestions.push("Include a variety of vegetables to ensure a broad nutrient intake.");
+    } else if (currentDiet.toLowerCase().includes('keto')) {
+        foodSuggestions.push("Focus on high-fat foods like avocados, nuts, and fatty fish.");
+        foodSuggestions.push("Limit carb intake by avoiding grains and starchy vegetables.");
+    }
+
+    if (mealFrequency < 3) {
+        foodSuggestions.push("Consider increasing meal frequency for better nutrient absorption.");
+        foodSuggestions.push("Ensure meals are nutrient-dense to compensate for lower frequency.");
+    } else if (mealFrequency >= 5) {
+        foodSuggestions.push("Distribute calories evenly across meals to maintain energy levels.");
+    }
+
+    if (foodPreferences.toLowerCase().includes('spicy')) {
+        foodSuggestions.push("Incorporate spicy foods like peppers to boost metabolism.");
+    }
+    if (foodPreferences.toLowerCase().includes('sweet')) {
+        foodSuggestions.push("Opt for naturally sweet foods like fruits to satisfy cravings.");
+    }
+    if (foodPreferences.toLowerCase().includes('salty')) {
+        foodSuggestions.push("Use herbs and spices to enhance flavor without added sodium.");
+    }
+
+    if (bodyType === 'endomorph') {
+        foodSuggestions.push("Focus on low-carb, high-protein meals to manage weight.");
+    } else if (bodyType === 'ectomorph') {
+        foodSuggestions.push("Increase calorie intake with nutrient-dense foods.");
+    } else if (bodyType === 'mesomorph') {
+        foodSuggestions.push("Maintain a balanced diet with moderate carbs and protein.");
+    }
+
+    let foodDiv = document.createElement("div");
+    foodDiv.innerHTML = `<h3>Recommended Diet Based on Your BMI (${bmi.toFixed(1)}) and Other Factors:</h3><div>${foodSuggestions.map(food => `<p>${food}</p>`).join('')}</div>`;
+    FormResultsDiv.appendChild(foodDiv);
+}
+
