@@ -169,3 +169,5 @@ button:hover {
     height: auto;
     margin-top: 10px;
 }
+
+textarea { resize: vertical; } 
