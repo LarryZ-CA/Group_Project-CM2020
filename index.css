@@ -101,15 +101,27 @@ p {
 
 
 /* Features List Styles */
+#features {
+    margin: 0 auto;
+    max-width: 1080px;
+}
+#features h2 {
+    text-align: center;
+}
+
 #features ul {
     list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     padding: 0;
 }
 
 #features ul li {
     background: #fff;
-    padding: 10px;
-    margin: 5px 0;
+    flex: 1 1 19%;
+    margin: 10px; /* Adjust spacing between items */
+    padding: 20px 20px 20px 20px;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
@@ -121,7 +133,35 @@ p {
 #features ul li:hover {
     background: #e9e9e9;
 }
+#getfit {
+    margin: 0 auto;
+    max-width: 1080px;
+}
+#getfit h2 {
+    text-align: center;
+}
 
+#getfit ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    padding: 0;
+}
+
+#getfit ul li {
+    flex: 1 1;
+    text-align: center;
+    margin: 10px; /* Adjust spacing between items */
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#getfit ul li img {
+    max-width: 100%;
+    height: 200px;
+}
 
 
 /* Footer Styles */
